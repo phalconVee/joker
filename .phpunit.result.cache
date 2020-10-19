@@ -1,0 +1,1 @@
+C:37:"PHPUnit\Runner\DefaultTestResultCache":283:{a:2:{s:7:"defects";a:1:{s:64:"PhalconVee\Joker\Tests\JokeFactoryTest::it_returns_a_random_joke";i:3;}s:5:"times";a:2:{s:64:"PhalconVee\Joker\Tests\JokeFactoryTest::it_returns_a_random_joke";d:0.01;s:68:"PhalconVee\Joker\Tests\JokeFactoryTest::it_returns_a_predefined_joke";d:0.001;}}}
