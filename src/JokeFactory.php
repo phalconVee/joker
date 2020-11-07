@@ -8,12 +8,12 @@ class JokeFactory
         'Chuck Norris\' tears cure cancer. Too bad he has never cried',
         'Chuck Norris counted to infinity... Twice.',
         'Chuck Norris tells Simon what to do.',
-        'Chuck Norris can kill your imaginary friends.'
+        'Chuck Norris can kill your imaginary friends.',
     ];
 
     public function __construct(array $jokes = null)
     {
-        if($jokes) {
+        if ($jokes) {
             $this->jokes = $jokes;
         }
     }
