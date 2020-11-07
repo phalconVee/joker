@@ -11,7 +11,7 @@ class JokeFactoryTest extends TestCase
     public function it_returns_a_random_joke()
     {
         $jokes = new JokeFactory([
-            'This is a joke'
+            'This is a joke',
         ]);
 
         $joke = $jokes->getRandomJoke();
@@ -26,7 +26,7 @@ class JokeFactoryTest extends TestCase
             'Chuck Norris\' tears cure cancer. Too bad he has never cried',
             'Chuck Norris counted to infinity... Twice.',
             'Chuck Norris tells Simon what to do.',
-            'Chuck Norris can kill your imaginary friends.'
+            'Chuck Norris can kill your imaginary friends.',
         ];
 
         $jokes = new JokeFactory();
