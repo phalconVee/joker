@@ -2,8 +2,6 @@
 
 namespace PhalconVee\Joker\helper;
 
-use GuzzleHttp\Client;
-
 class GuzzleRequestHelper
 {
     protected $client;
@@ -14,7 +12,7 @@ class GuzzleRequestHelper
     }
 
     /**
-     * Prepare Http Request
+     * Prepare Http Request.
      *
      * @param $method
      * @param $url
@@ -26,25 +24,24 @@ class GuzzleRequestHelper
         $response = null;
 
         try {
-
             if ($method == 'GET') {
                 $response = $this->doGet($url, $body);
-            } else if ($method == 'POST') {
+            } elseif ($method == 'POST') {
                 $response = $this->doPost($url, $body);
-            } else if ($method == 'MULTIPART') {
+            } elseif ($method == 'MULTIPART') {
                 $response = $this->doMultiPart($url, $body);
             }
 
             $response = json_decode($response->getBody());
-            return $response;
 
+            return $response;
         } catch (\Exception $e) {
             return $e->getMessage();
         }
     }
 
     /**
-     * Get Query
+     * Get Query.
      *
      * @param $url
      * @param array $body
@@ -53,12 +50,12 @@ class GuzzleRequestHelper
     public function doGet($url, $body = [])
     {
         return $this->client->request('GET', $url, [
-            'query' => $body
+            'query' => $body,
         ]);
     }
 
     /**
-     * Post Query
+     * Post Query.
      *
      * @param $url
      * @param $body
@@ -67,12 +64,12 @@ class GuzzleRequestHelper
     public function doPost($url, $body)
     {
         return $this->client->request('POST', $url, [
-            'form_params' => $body
+            'form_params' => $body,
         ]);
     }
 
     /**
-     * Multipart Query
+     * Multipart Query.
      *
      * @param $url
      * @param array $body
@@ -81,7 +78,7 @@ class GuzzleRequestHelper
     public function doMultiPart($url, $body = [])
     {
         return $this->client->request('POST', $url, [
-            'multipart' => $body
+            'multipart' => $body,
         ]);
     }
 }
