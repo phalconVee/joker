@@ -23,7 +23,7 @@ class JokeFactoryTest extends TestCase
 
         $result = $jokes->getRandomJoke();
 
-       $this->assertSame('If tapped, a Chuck Norris roundhouse kick could power the country of Australia for 44 minutes.', $result);
+        $this->assertSame('If tapped, a Chuck Norris roundhouse kick could power the country of Australia for 44 minutes.', $result);
     }
 
     private function get_api_mock($status, $body = null)

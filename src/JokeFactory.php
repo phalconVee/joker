@@ -7,7 +7,7 @@ use PhalconVee\Joker\Helpers\GuzzleRequestHelper;
 
 class JokeFactory
 {
-    const API_ENDPOINT = "http://api.icndb.com/jokes/random";
+    const API_ENDPOINT = 'http://api.icndb.com/jokes/random';
 
     protected $client;
 
@@ -18,7 +18,7 @@ class JokeFactory
     }
 
     /**
-     * Set up Guzzle Helper
+     * Set up Guzzle Helper.
      *
      * @return GuzzleRequestHelper
      */
@@ -28,13 +28,14 @@ class JokeFactory
     }
 
     /**
-     * Get Random Joke
+     * Get Random Joke.
      *
      * @return mixed
      */
     public function getRandomJoke()
     {
         $response = $this->setUpGuzzleHelper()->makeHttpRequest('GET', self::API_ENDPOINT);
+
         return $response->value->joke;
     }
 }
