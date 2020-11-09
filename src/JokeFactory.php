@@ -3,7 +3,7 @@
 namespace PhalconVee\Joker;
 
 use GuzzleHttp\Client;
-use PhalconVee\Joker\helper\GuzzleRequestHelper;
+use PhalconVee\Joker\Helpers\GuzzleRequestHelper;
 
 class JokeFactory
 {

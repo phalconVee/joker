@@ -1,8 +1,6 @@
 <?php
 
-namespace PhalconVee\Joker\helper;
-
-use GuzzleHttp\Client;
+namespace PhalconVee\Joker\Helpers;
 
 class GuzzleRequestHelper
 {
