@@ -3,7 +3,6 @@
 
 namespace PhalconVee\Joker\Facades;
 
-
 use Illuminate\Support\Facades\Facade;
 
 class ChuckNorris extends Facade
