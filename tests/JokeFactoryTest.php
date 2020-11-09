@@ -6,7 +6,6 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Psr7\Response;
-use PhalconVee\Joker\helper\GuzzleRequestHelper;
 use PhalconVee\Joker\JokeFactory;
 use PHPUnit\Framework\TestCase;
 
@@ -23,7 +22,7 @@ class JokeFactoryTest extends TestCase
 
         $result = $jokes->getRandomJoke();
 
-       $this->assertSame('If tapped, a Chuck Norris roundhouse kick could power the country of Australia for 44 minutes.', $result);
+        $this->assertSame('If tapped, a Chuck Norris roundhouse kick could power the country of Australia for 44 minutes.', $result);
     }
 
     private function get_api_mock($status, $body = null)
