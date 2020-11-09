@@ -2,24 +2,39 @@
 
 namespace PhalconVee\Joker;
 
+use GuzzleHttp\Client;
+use PhalconVee\Joker\helper\GuzzleRequestHelper;
+
 class JokeFactory
 {
-    protected $jokes = [
-        'Chuck Norris\' tears cure cancer. Too bad he has never cried',
-        'Chuck Norris counted to infinity... Twice.',
-        'Chuck Norris tells Simon what to do.',
-        'Chuck Norris can kill your imaginary friends.',
-    ];
+    const API_ENDPOINT = "http://api.icndb.com/jokes/random";
 
-    public function __construct(array $jokes = null)
+    protected $client;
+
+    public function __construct(Client $client = null)
     {
-        if ($jokes) {
-            $this->jokes = $jokes;
-        }
+        $this->client = $client ?: new Client();
+        $this->setUpGuzzleHelper();
     }
 
+    /**
+     * Set up Guzzle Helper
+     *
+     * @return GuzzleRequestHelper
+     */
+    private function setUpGuzzleHelper()
+    {
+        return new GuzzleRequestHelper($this->client);
+    }
+
+    /**
+     * Get Random Joke
+     *
+     * @return mixed
+     */
     public function getRandomJoke()
     {
-        return $this->jokes[array_rand($this->jokes)];
+        $response = $this->setUpGuzzleHelper()->makeHttpRequest('GET', self::API_ENDPOINT);
+        return $response->value->joke;
     }
 }

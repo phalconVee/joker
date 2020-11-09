@@ -2,6 +2,11 @@
 
 namespace PhalconVee\Joker\Tests;
 
+use GuzzleHttp\Client;
+use GuzzleHttp\Handler\MockHandler;
+use GuzzleHttp\HandlerStack;
+use GuzzleHttp\Psr7\Response;
+use PhalconVee\Joker\helper\GuzzleRequestHelper;
 use PhalconVee\Joker\JokeFactory;
 use PHPUnit\Framework\TestCase;
 
@@ -10,29 +15,23 @@ class JokeFactoryTest extends TestCase
     /** @test */
     public function it_returns_a_random_joke()
     {
-        $jokes = new JokeFactory([
-            'This is a joke',
-        ]);
+        $body = '{ "type": "success", "value": { "id": 76, "joke": "If tapped, a Chuck Norris roundhouse kick could power the country of Australia for 44 minutes.", "categories": [] } }';
 
-        $joke = $jokes->getRandomJoke();
+        $mock = $this->get_api_mock(200, $body);
 
-        $this->assertSame('This is a joke', $joke);
+        $jokes = new JokeFactory($mock);
+
+        $result = $jokes->getRandomJoke();
+
+       $this->assertSame('If tapped, a Chuck Norris roundhouse kick could power the country of Australia for 44 minutes.', $result);
     }
 
-    /** @test */
-    public function it_returns_a_predefined_joke()
+    private function get_api_mock($status, $body = null)
     {
-        $joke_chest = [
-            'Chuck Norris\' tears cure cancer. Too bad he has never cried',
-            'Chuck Norris counted to infinity... Twice.',
-            'Chuck Norris tells Simon what to do.',
-            'Chuck Norris can kill your imaginary friends.',
-        ];
+        $mock = new MockHandler([new Response($status, [], $body)]);
+        $handler = HandlerStack::create($mock);
+        $client = new Client(['handler' => $handler]);
 
-        $jokes = new JokeFactory();
-
-        $joke = $jokes->getRandomJoke();
-
-        $this->assertContains($joke, $joke_chest);
+        return $client;
     }
 }
