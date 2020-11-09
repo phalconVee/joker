@@ -11,6 +11,10 @@ class JokeFactory
 
     protected $client;
 
+    /**
+     * JokeFactory constructor.
+     * @param Client|null $client
+     */
     public function __construct(Client $client = null)
     {
         $this->client = $client ?: new Client();
