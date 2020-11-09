@@ -1,8 +1,6 @@
 <?php
 
-
 namespace PhalconVee\Joker\Facades;
-
 
 use Illuminate\Support\Facades\Facade;
 
