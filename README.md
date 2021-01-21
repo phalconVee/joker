@@ -1,6 +1,6 @@
 # Phalcon Chuck Norris Jokes
 
-Create Chuck Norris jokes in your next PHP projects.
+Create Chuck Norris jokes in your next PHP projects. Yaay!!!
 
 ## Installation
 
